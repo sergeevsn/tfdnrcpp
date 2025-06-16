@@ -16,6 +16,8 @@ const size_t trace_aperture = 15;
 const float threshold_multiplier = 10.0f;
 const bool global_median = true; // variant with one median for all frequencies
 
+tfd::seismic_data seismogram; 
+
 auto stft = tfd::compute_stft(seismogram, n_fft, n_overlap);            
 auto filtered_stft = tfd::tfd_noise_rejection(stft, trace_aperture, threshold_multiplier, n_fft, global_median);
 auto filtered_seismogram = tfd::compute_istft(filtered_stft, n_fft, n_overlap, N); 
